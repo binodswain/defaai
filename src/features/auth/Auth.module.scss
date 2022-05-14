@@ -1,4 +1,4 @@
-.signup {
+.authpage {
     font-size: 14px;
     display: flex;
     flex-direction: column;
@@ -10,7 +10,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        // text-align: center;
         
         form {
             width: 300px;
@@ -35,11 +34,8 @@
                     border: 1px solid grey;
                     border-radius: 5px;
                 }
-
             }
-
         }
-
         p {
             margin-top: 3rem;
             text-align: center;
@@ -47,6 +43,27 @@
 
         a {
             text-decoration: none;
+        }
+    }
+
+    .error {
+        color: red;
+        font-size: 12px;
+    }
+}
+
+.wrapper {
+    block-size: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    height: 100%;
+    flex: 1;
+
+    header {
+        h1 {
+            font-size: 1.5rem;
+            margin: 1rem 0;
         }
     }
 }
