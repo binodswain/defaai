@@ -1,0 +1,192 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10px;
+    
+    border-bottom: 1px solid #e5e5e5;
+
+    &__left {
+        display: flex;
+        align-items: center;
+    }
+
+    
+    &__right {
+        display: flex;
+        align-items: center;
+
+        .logout {
+            padding: 5px 10px;
+            border: none;
+            color: red;
+            background-color: transparent;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    }
+   
+
+}
+
+.tabs {
+    list-style: none;
+    display: flex;
+
+    &__active {
+        color: var(--select-color) !important;
+    }
+
+    li {
+        
+        a {
+            padding: 0.7rem;
+            text-decoration: none;
+            display: inline-block;
+            color: grey
+        }
+    }
+}
+
+.profile {
+    margin-top: 2rem;
+
+    &__image {
+        display: flex;
+        align-items: center;
+
+        img {
+            max-width: 150px;
+            max-height: 150px;
+            border-radius: 50%;
+        }
+
+        .edit {
+            margin-left: 1.5rem;
+            font-size: 20px;
+            padding: 5px;
+            color: var(--select-color);
+            background-color: var(--surface2);
+            border-radius: 50%;
+
+        }
+
+    }
+    &__details {
+        max-width: 700px;
+        flex-wrap: wrap;
+        display: flex;
+
+        .element {
+            width: 50%;
+            padding-right: 2rem;
+            padding-bottom: 1rem;
+            label {
+                display: block;
+                font-size: 16px;
+                padding: 5px;
+            }
+            input {
+                padding: 10px;
+                border: 1px solid grey;
+                border-radius: 5px;
+                width: 100%;
+                font-size: 17px;
+            }
+        }
+
+    }
+}
+
+.planlist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 1rem;
+    margin-top: 2rem;
+
+    .plan {
+        padding: 1rem 2rem 0;
+        margin-bottom: 2rem;
+
+        .planheader {
+            margin-bottom: 10px;
+
+            .planheader_title {
+                font-size: 24px;
+                font-weight: bold;
+            }
+        }
+        .amount {
+            font-weight: bold;
+            font-size: 25px;
+            margin-bottom: 1rem;
+
+
+            .amount_symbol {
+                font-size: 14px;
+                font-weight: normal;
+            }
+        }
+        .planfeatures {
+            margin-left: 1rem;
+            margin-bottom: 1rem;
+
+            li {
+                margin-bottom: 10px;
+                position: relative;
+                padding-left: 10px;
+
+                &::marker {
+                    content: '✓';
+                    font-weight: bold;
+                }
+            }
+        }
+
+        .planbutton {
+            padding: 0.7rem;
+            width: 100%;
+            border: none;
+            font-size: 18px;
+            background-color: #a8ceff;
+            color: #456b99;
+            border-radius: 5px;
+        }
+        .current {
+            border: none;
+            padding: 1rem;
+            width: 100%;
+            font-size: 18px;
+            background-color: transparent;
+
+        }
+
+        &.current {
+            background-color: green;
+            color: #fff;
+            border-radius: 5px;
+            margin-top: -2rem;
+        }
+    }
+}
+.billing {
+    margin-top: 2rem;
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        th {
+            text-align: left;
+            color: grey;
+        }
+
+        tbody {
+            tr {
+                td {
+                    padding:  10px 0;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,212 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { fetchUserListAPI } from "./dashboardAPI";
+const imageData = [
+    {
+        name: "Office",
+        picture: "https://picsum.photos/seed/picsum/500/300",
+    },
+    {
+        name: "Space",
+        picture: "https://picsum.photos/seed/picsum/500/300",
+    },
+    {
+        name: "Noise",
+        picture: "https://picsum.photos/seed/picsum/500/300",
+    },
+    {
+        name: "Meeting room",
+        picture: "https://picsum.photos/seed/picsum/500/300",
+    },
+    {
+        name: "Books",
+        picture: "https://picsum.photos/seed/picsum/500/300",
+    },
+    {
+        name: "Desk",
+        picture: "https://picsum.photos/seed/picsum/500/300",
+    },
+];
+const solidcolor = [
+    {
+        name: "Red",
+        value: "red",
+    },
+    {
+        name: "Green",
+        value: "green",
+    },
+    {
+        name: "Blue",
+        value: "blue",
+    },
+    {
+        name: "Yellow",
+        value: "yellow",
+    },
+    {
+        name: "Purple",
+        value: "purple",
+    },
+    {
+        name: "Pink",
+        value: "pink",
+    },
+    {
+        name: "Cyan",
+        value: "cyan",
+    },
+];
+
+const initialState = {
+    isLoading: false,
+    selectedTab: "Actor",
+    metadata: {
+        title: "Enter title here",
+        description: "Video description",
+        tags: [],
+    },
+    actor: {
+        data: [],
+        selected: null,
+    },
+    voice: {
+        data: ["asian", "british", "american"],
+        selected: "asian",
+    },
+    alignment: {
+        data: ["left", "center", "right"],
+        selected: "center",
+    },
+    background: {
+        data: {
+            image: imageData,
+            solidcolor,
+            videos: [],
+        },
+        selected: imageData[0],
+        selectedSubTab: "image",
+    },
+    error: null,
+    metadataOverlay: false,
+    savedVideos: [],
+};
+
+export const fetchUsersAsync = createAsyncThunk(
+    "dashboard/fetchUsers",
+    async () => {
+        const response = await fetchUserListAPI();
+        // The value we return becomes the `fulfilled` action payload
+        return response;
+    }
+);
+
+export const dashboardSlice = createSlice({
+    name: "dashboard",
+    initialState,
+    // The `reducers` field lets us define reducers and generate associated actions
+    reducers: {
+        selectTab: (state, action) => {
+            state.selectedTab = action.payload;
+        },
+        selectUser: (state, action) => {
+            state.actor.selected = action.payload;
+        },
+        selectAlignment: (state, action) => {
+            state.alignment.selected = action.payload;
+        },
+        selectVoice: (state, action) => {
+            state.voice.selected = action.payload;
+        },
+        selectBackground: (state, action) => {
+            state.background.selected = action.payload;
+        },
+        selectBackgroundSubTab: (state, action) => {
+            state.background.selectedSubTab = action.payload;
+        },
+        updateMetaData: (state, action) => {
+            state.metadata = action.payload;
+        },
+        saveCurrentVideo: (state) => {
+            const { metadata, actor, voice, alignment, background } = state;
+            const currentVideos = {
+                metadata,
+                actor: actor.selected,
+                voice: voice.selected,
+                alignment: alignment.selected,
+                background: background.selected,
+            };
+            state.savedVideos.push(currentVideos);
+        },
+        resetData: (state) => {
+            state = {
+                ...state,
+                selectedTab: "Actor",
+                metadata: {
+                    title: "Enter title here",
+                    description: "Video description",
+                    tags: [],
+                },
+                actor: {
+                    data: [],
+                    selected: null,
+                },
+                voice: {
+                    data: ["asian", "british", "american"],
+                    selected: "asian",
+                },
+                alignment: {
+                    data: ["left", "center", "right"],
+                    selected: "center",
+                },
+                background: {
+                    data: {
+                        image: imageData,
+                        solidcolor,
+                        videos: [],
+                    },
+                    selected: imageData[0],
+                    selectedSubTab: "image",
+                },
+            };
+        },
+        openMetadataOverlay: (state) => {
+            state.metadataOverlay = true;
+        },
+        closeMetadataOverlay: (state, action) => {
+            state.metadataOverlay = false;
+            state.metadata = action.payload;
+        },
+    },
+    // The `extraReducers` field lets the slice handle actions defined elsewhere,
+    // including actions generated by createAsyncThunk or in other slices.
+    extraReducers: (builder) => {
+        builder
+            .addCase(fetchUsersAsync.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(fetchUsersAsync.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.actor.data = action.payload;
+                state.actor.selected = action.payload[0];
+            });
+        // TODO handle error case
+    },
+});
+
+export const {
+    selectTab,
+    selectUser,
+    selectAlignment,
+    selectBackground,
+    selectVoice,
+    selectBackgroundSubTab,
+    updateMetaData,
+    saveCurrentVideo,
+    resetData,
+    openMetadataOverlay,
+    closeMetadataOverlay,
+} = dashboardSlice.actions;
+
+export const getDashboardModule = (state) => state.dashboard;
+
+export default dashboardSlice.reducer;

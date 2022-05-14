@@ -1,0 +1,94 @@
+:root {
+  --surface1: #f4f4f4;
+  --surface2: #ebf2ff;
+  --select-color: #3860ad;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+html, body, #root {
+  height: 100%;
+  block-size: 100%;
+  /* background-color: red; */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+
+  > nav {
+    border-right: 1px solid lightgray;
+    height: 100%;
+    width: 75px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    ul {
+      list-style: none;
+
+      a {
+        padding: 0.5rem;
+        display: inline-block;
+        margin-bottom: 1rem;
+
+        .material-symbols-outlined {
+          font-size: 35px;
+          color: grey;
+        }
+      }
+    }
+
+    .active {
+      background-color: var(--surface2);
+      border-radius: 0.5rem;
+      span {
+        color: var(--select-color) !important;
+
+      }
+    }
+  }
+
+  > div {
+    flex: 1;
+  }
+}
+
+*[hidden] {
+  display: none !important;
+}
+
+.app_content {
+  margin: auto;
+  overflow-y: auto;
+  height: 100%;
+  block-size: 100%;
+}
+
+.container {
+  margin: auto;
+  max-width: 1200px;
+  padding: 0 2rem 0;
+
+}
