@@ -62,7 +62,7 @@ const initialState = {
     selectedTab: "Actor",
     metadata: {
         title: "Enter title here",
-        description: "Video description",
+        description: "",
         tags: [],
     },
     actor: {
@@ -143,7 +143,7 @@ export const dashboardSlice = createSlice({
                 selectedTab: "Actor",
                 metadata: {
                     title: "Enter title here",
-                    description: "Video description",
+                    description: "",
                     tags: [],
                 },
                 actor: {

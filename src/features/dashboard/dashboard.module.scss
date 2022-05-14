@@ -49,6 +49,28 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 2rem;
+
+    .image__wrapper{
+        position: relative;
+
+        .button__wrapper {
+            position: absolute;
+            bottom: 1.5rem;
+            width: 100%;
+            text-align: center;
+            button {
+                border-radius: 5px;
+                background-color: var(--surface2);
+                color: var(--select-color);
+                border: none;
+                padding:  0.5rem 1rem;
+                font-size: 15px;
+                cursor: pointer;
+                font-weight: bold;
+            }
+        }
+
+    }
     
     &__preview {
         &__wrapper {
@@ -271,7 +293,7 @@
     grid-gap: 1.5rem;
 
     .savedvideo {
-        background-color: #e5e5e5;
+        background-color: var(--surface1);
         border-radius: 0.5rem;
         padding: 5px;
 
@@ -356,5 +378,25 @@
     }
 
     &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+    }
+
+    
+    &__tag {
+        border: 1px solid grey;
+        padding: 1px 13px;
+        font-size: 13px;
+        color: rgb(134, 134, 134);
+        margin-right: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &__selected {
+            border: 1px solid var(--select-color);
+            color: var(--select-color);
+            background-color: var(--surface2);
+        }
     }
 }

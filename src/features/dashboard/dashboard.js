@@ -66,11 +66,16 @@ function ActorPreview() {
 
     return (
         <section className={styles.content__preview__wrapper}>
-            <img
-                src={picture.large}
-                alt=""
-                className={styles.content__preview__image}
-            />
+            <div className={styles.image__wrapper}>
+                <img
+                    src={picture.large}
+                    alt=""
+                    className={styles.content__preview__image}
+                />
+                <div className={styles.button__wrapper}>
+                    <button>Preview</button>
+                </div>
+            </div>
             <div className={styles.content__preview__textbox}>
                 <textarea placeholder="Type or paste your videoscript here. You can also request a translation of an English script to any of 27 other languages"></textarea>
                 <div className={styles.content__preview__actionbar}>
