@@ -138,36 +138,15 @@ export const dashboardSlice = createSlice({
             state.savedVideos.push(currentVideos);
         },
         resetData: (state) => {
-            state = {
-                ...state,
-                selectedTab: "Actor",
-                metadata: {
-                    title: "Enter title here",
-                    description: "",
-                    tags: [],
-                },
-                actor: {
-                    data: [],
-                    selected: null,
-                },
-                voice: {
-                    data: ["asian", "british", "american"],
-                    selected: "asian",
-                },
-                alignment: {
-                    data: ["left", "center", "right"],
-                    selected: "center",
-                },
-                background: {
-                    data: {
-                        image: imageData,
-                        solidcolor,
-                        videos: [],
-                    },
-                    selected: imageData[0],
-                    selectedSubTab: "image",
-                },
-            };
+            state.selectedTab = "Actor";
+            state.metadata.title = "Enter title here";
+            state.metadata.description = "";
+            state.metadata.tags = [];
+            state.actor.selected = null;
+            state.voice.selected = "asian";
+            state.alignment.selected = "center";
+            state.background.selected = imageData[0];
+            state.background.selectedSubTab = "image";
         },
         openMetadataOverlay: (state) => {
             state.metadataOverlay = true;
