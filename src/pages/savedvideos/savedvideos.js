@@ -2,7 +2,7 @@ import { AppContentLayout } from "../../components/layout/Layout";
 import {
     SavedVideoList,
     SavedVideosHeader,
-} from "../../features/dashboard/dashboard";
+} from "../../features/dashboard/savedVideo";
 
 function SavedVideos() {
     return (

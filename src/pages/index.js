@@ -17,7 +17,7 @@ export default function App() {
     const activeClassName = "active";
     return (
         <>
-            <nav>
+            <nav className="sidebar">
                 <ul>
                     <li>
                         <Link to="/">

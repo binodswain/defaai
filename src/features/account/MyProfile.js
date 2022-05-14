@@ -41,6 +41,7 @@ export default function MyProfile() {
                     <img src={profile_pic} alt="" />
                     <span
                         className={cn("material-symbols-outlined", styles.edit)}
+                        role="button"
                     >
                         edit
                     </span>

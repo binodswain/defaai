@@ -8,7 +8,7 @@ export default function Login() {
     return (
         <AuthPageLayout>
             <AuthpageHeader>
-                <h1>Login</h1>
+                <h1>Sign in</h1>
             </AuthpageHeader>
             <LoginContent />
         </AuthPageLayout>
