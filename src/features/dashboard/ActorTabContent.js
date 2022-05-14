@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getDashboardModule, selectUser } from "./dashboardSlice";
 import styles from "./dashboard.module.scss";
 import cn from "classnames";
+import TabOption from "../../components/tabOption/TabOption";
 
 export default function ActorTabContent() {
     const dashboardModule = useSelector(getDashboardModule);
@@ -20,25 +21,13 @@ export default function ActorTabContent() {
                     const { email: email_selected } = actor.selected || {};
                     const isSelected = email === email_selected;
 
-                    const clsName = cn(styles.user__wrapper, {
-                        [styles.user__selected]: isSelected,
-                    });
-
                     return (
-                        <div
-                            className={clsName}
-                            key={email}
+                        <TabOption
+                            isSelected={isSelected}
+                            image={picture.large}
+                            name={name.first}
                             onClick={() => handleActorSelect(user)}
-                        >
-                            <img
-                                className={styles.user__image}
-                                src={picture.large}
-                                alt=""
-                            />
-                            <div className={styles.user__name}>
-                                {name.first}
-                            </div>
-                        </div>
+                        />
                     );
                 })}
         </section>

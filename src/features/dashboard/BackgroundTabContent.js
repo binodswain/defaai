@@ -6,12 +6,13 @@ import {
 } from "./dashboardSlice";
 import styles from "./dashboard.module.scss";
 import cn from "classnames";
+import TabOption from "../../components/tabOption/TabOption";
 
 export default function BackgroundTabContent() {
     const dashboardModule = useSelector(getDashboardModule);
     const {
         isLoading,
-        background: { data, selectedSubTab },
+        background: { data, selectedSubTab, selected },
     } = dashboardModule;
     const dispatch = useDispatch();
 
@@ -58,22 +59,14 @@ export default function BackgroundTabContent() {
                     {data.image.map((background) => {
                         const { name, picture } = background;
                         return (
-                            <div
-                                className={styles.background__item}
-                                key={name}
+                            <TabOption
+                                name={name}
+                                image={picture}
                                 onClick={() =>
                                     handleBackgroundSelect(background)
                                 }
-                            >
-                                <img
-                                    className={styles.imagelist__image}
-                                    src={picture}
-                                    alt=""
-                                />
-                                <div className={styles.imagelist__name}>
-                                    {name}
-                                </div>
-                            </div>
+                                isSelected={selected.name === name}
+                            />
                         );
                     })}
                 </section>
@@ -107,23 +100,14 @@ export default function BackgroundTabContent() {
                     {data.solidcolor.map((background) => {
                         const { name, value } = background;
                         return (
-                            <div
-                                className={styles.background__item}
-                                key={name}
+                            <TabOption
+                                name={name}
+                                color={value}
                                 onClick={() =>
                                     handleBackgroundSelect(background)
                                 }
-                            >
-                                <div
-                                    style={{
-                                        [`--color-background`]: value,
-                                    }}
-                                    className={styles.colorlist__color}
-                                />
-                                <div className={styles.colorlist__name}>
-                                    {name}
-                                </div>
-                            </div>
+                                isSelected={selected.value === value}
+                            />
                         );
                     })}
                 </section>
