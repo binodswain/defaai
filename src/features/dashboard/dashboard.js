@@ -118,12 +118,13 @@ export function PageContent() {
                             });
                             return (
                                 <button
+                                    key={tab}
                                     className={clsName}
                                     role="tab"
                                     aria-selected={isSelected}
                                     aria-controls={`panel-${idx}`}
                                     id={`${tab.toLowerCase()}_selection`}
-                                    tabindex={isSelected ? 0 : -1}
+                                    tabIndex={isSelected ? 0 : -1}
                                     onClick={() => handleTabSelect(tab)}
                                 >
                                     {tab}

@@ -23,6 +23,7 @@ export default function ActorTabContent() {
 
                     return (
                         <TabOption
+                            key={email}
                             isSelected={isSelected}
                             image={picture.large}
                             name={name.first}

@@ -60,6 +60,7 @@ export default function BackgroundTabContent() {
                         const { name, picture } = background;
                         return (
                             <TabOption
+                                key={name}
                                 name={name}
                                 image={picture}
                                 onClick={() =>
@@ -101,6 +102,7 @@ export default function BackgroundTabContent() {
                         const { name, value } = background;
                         return (
                             <TabOption
+                                key={value}
                                 name={name}
                                 color={value}
                                 onClick={() =>

@@ -19,7 +19,6 @@ export default function VoiceTabContent() {
             {data &&
                 data.map((voice) => {
                     const isSelected = selected === voice;
-                    console.log(voice, isSelected);
                     return (
                         <div
                             className={cn(styles.voice__wrapper, {
