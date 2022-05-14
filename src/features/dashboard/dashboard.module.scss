@@ -1,11 +1,17 @@
+@use '../../assets/styles/mixins' as *;
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px 10px;
     margin-bottom: 2rem;
-    
     border-bottom: 1px solid #e5e5e5;
+
+    @include viewport(medium) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
     &__left {
         display: flex;
@@ -16,6 +22,9 @@
     &__right {
         display: flex;
         align-items: center;
+        @include viewport(medium) {
+            margin-top: 1rem;
+        }
 
         button {
             &:not(:first-child) {
@@ -41,10 +50,7 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 2rem;
     
-    
-
     &__preview {
-        
         &__wrapper {
             background-color: var(--surface1);
             padding: 1rem;
@@ -102,7 +108,7 @@
                 padding: 1rem;
                 cursor: pointer;
                 color: #a6a6a6;
-                font-weight: 500;
+                font-weight: 600;
 
                 &__selected {
                     color: var(--select-color);
@@ -153,13 +159,22 @@
                     background-color: var(--surface1);
                     padding: 13px;
                     border-radius: 0.5rem;
+                    border: 1px solid transparent;
+                }
+
+                &__selected {
+                    border-color: 1px solid var(--select-color);
+                    background-color: var(--surface2);
+                    color: var(--select-color);
+
+                    --selected : var(--select-color);
                 }
 
                 &__action {
-                    background-color: var(--select-color);
-                    border: none;
+                    background-color: var(--selected, #999999);
                     padding: 0.5rem;
                     border-radius: 50%;
+                    border: none;
 
                     
                     svg {
@@ -199,6 +214,7 @@
                     color: grey;
                     font-weight: bold;
                     border: 1px solid transparent;
+                    cursor: pointer;
                 }   
                 &__selected {
                     border: 1px solid var(--select-color);
